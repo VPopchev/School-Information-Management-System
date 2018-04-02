@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+    {% endblock %}
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">
+
+        </div>
+        <ul>
+            {% if app.user %}
+                <li><a href="{{ path('user_profile', {'id': app.user.id }) }}">{{ app.user.firstName ~ ' ' ~ app
+                        .user
+                        .lastName }}</a></li>
+                <li><a href="{{ path('all_users') }}">All Students</a></li>
+                <li><a href="{{ path('new_specialty') }}">Add Specialty</a></li>
+                <li><a href="{{ path('new_subject') }}">Add Subjects</a></li>
+                <li><a href="{{ path('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ path('login') }}">Login</a></li>
+                <li><a href="{{ path('register') }}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+{% block body %}
+
+{% endblock %}
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('logoClick.js') }}"></script>
+{% endblock %}
+</body>
+</html>

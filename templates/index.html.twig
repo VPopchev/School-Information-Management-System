@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('landing-page.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>School Information Management System</h1>
+    {% if app.user %}
+        <section class="baseInfo">
+            <h2>Welcome back {{ app.user.firstName ~ ' ' ~ app.user.lastName }}</h2>
+            <section class="specialties">
+                <h3>Your Specialty</h3>
+                <div>
+                    <p>
+                        <a href="{{ path('specialty_profile', {'id': app.user.specialty.id}) }}">
+                            {{ app.user.specialty.name }}
+                        </a>
+                    </p>
+                </div>
+            </section>
+        </section>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1 class="formHeading">Add new School Specialty</h1>
+    {{ form_start(form) }}
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="btnContainer">
+        <a href="{{ path('homepage') }}" class="formBack">back home</a>
+        {{ form_widget(form.Submit) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

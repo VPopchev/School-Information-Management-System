@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="classBook-container">
+        {% for subject in specialty.subjects %}
+            <div class="classBook-subject-container">
+                <h2>{{ subject.name }}</h2>
+                {% for student in specialty.students %}
+                    <div class="classBook-student-container">
+                        {% if loop.parent.loop.first %}
+                            <h3>{{ student.firstName ~ ' ' ~ student.lastName }}</h3>
+                        {% endif %}
+                        <p>{{ student.subjectMarks(subject) }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
+

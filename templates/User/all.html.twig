@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table>
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Specialty</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.firstName ~ ' ' ~ user.lastName }}</td>
+                <td>{{ user.specialty.name|default('n/a') }}</td>
+                <td>{{ user.email }}</td>
+                <td><a href="{{ path('student_profile', {'id': user.id}) }}">Student Profile</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

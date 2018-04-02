@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1 class="formHeading">Set Mark to {{ user.firstName ~ ' ' ~ user.lastName }}</h1>
+    {{ form_start(form) }}
+    <div>
+        {{ form_label(form.value) }}
+        {{ form_widget(form.value) }}
+    </div>
+    <div>
+        {{ form_label(form.subject) }}
+        {{ form_widget(form.subject) }}
+    </div>
+    <div class="btnContainer">
+        <a href="{{ path('homepage') }}" class="formBack">back home</a>
+        {{ form_widget(form.Submit) }}
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

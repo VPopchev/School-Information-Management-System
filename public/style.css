@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body {
+    background: url("school-pattern.jpg") center center;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    background: url("graduation-hat.png") no-repeat center center;
+    background-size: cover;
+    cursor: pointer;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+    width: 65%;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    padding: 5px;
+}
+
+ul li a:hover {
+    cursor: pointer;
+    text-shadow: 1px 1px 3px black;
+    border-bottom: 2px solid black;
+}
+
+body {
+    background: url("school.jpg") no-repeat center center;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+    height: 610px;
+}
+
+.formHeading {
+    text-align: center;
+    color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+    padding: 15px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    border-radius: 20px;
+}
+
+.formLabel {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #5eb5e0;
+    text-shadow: 1px 1px 1px white;
+}
+
+.formInput {
+    width: 80%;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 2px solid #5eb5e0;
+    background: transparent;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.formInput:required {
+    box-shadow: none;
+}
+
+.formInput:invalid {
+    border-bottom: 2px solid red;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.formSubmit {
+    width: 35%;
+    margin: auto;
+    height: 30px;
+    padding: 5px 10px;
+    background: transparent;
+    border: 2px solid #5eb5e0;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #5eb5e0;
+}
+
+.formSubmit:hover {
+    cursor: pointer;
+    background: #5eb5e0;
+    color: white;
+}
+
+.formBack {
+    text-decoration: none;
+    padding: 5px 10px;
+    width: 35%;
+    margin: auto;
+    background: transparent;
+    border: 2px solid #5eb5e0;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #ff574d;
+}
+
+.formBack:hover {
+    cursor: pointer;
+    background: #5eb5e0;
+    color: white;
+}
+
+.specialty-heading {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+
+.spec-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: start;
+}
+
+.students, .subjects {
+    background: rgba(255, 255, 255, 0.6);
+    width: 40%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    vertical-align: top;
+}
+
+.students p, .subjects p {
+    background: rgb(255, 255, 255);
+    padding: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 6px;
+    color: #5eb5e0;
+}
+
+.students p a {
+    text-decoration: none;
+    color: #5eb5e0;
+}
+
+.marks {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    vertical-align: top;
+    width: 80%;
+    margin: auto;
+}
+
+.marks h2 {
+    text-align: center;
+    font-size: 26px;
+}
+
+.marks p {
+    font-size: 18px;
+    font-weight: bolder;
+    color: white;
+    background: rgba(255, 39, 10, 0.7);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.marks p span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #5eb5e0;
+}
+
+.marks > a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 15px;
+    background: #3299ec;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+.marks > a:hover {
+    cursor: pointer;
+    background: transparent;
+    color: #3299ec;
+}
+
+.sub-avg {
+    float: right;
+}
+
+.classBook-container {
+    width: 75%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.classBook-subject-container {
+    display: inline-block;
+    width: 25%;
+
+    vertical-align: top;
+    color: white;
+}
+
+.classBook-student-container {
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+    height: 60px;
+}
+
+.classBook-student-container h3 {
+    position: relative;
+    right: 150px;
+}
+
+.profile {
+    color: white;
+}
+
+.profile ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-profile-marks {
+    color: white;
+}
+
+.classBook-link {
+    text-align: center;
+}
+
+.classBook-link a {
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 66, 8, 0.6);
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: all .8s;
+}
+
+.classBook-link a:hover {
+    background: rgba(255, 0, 0,1);
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 class="specialty-heading">{{ specialty.name }} Specialty Page</h1>
+    <h3 class="classBook-link"><a href="{{ path('specialty_classBook', {'id': specialty.id}) }}">Specialty Class
+            book</a></h3>
+    <section class="spec-main">
+        <section class="students">
+            <h2>Students</h2>
+            {% for student in students %}
+                <p>
+                    <a href="{{ path('student_profile', {'id': student.id}) }}">
+                        {{ student.firstName ~ ' ' ~ student.lastName }}
+                    </a>
+                </p>
+            {% else %}
+                <p>No students in this specialty</p>
+            {% endfor %}
+        </section>
+        <section class="subjects">
+            <h2>Subjects</h2>
+            {% for subject in specialty.subjects %}
+                <p>
+                    {{ subject.name }}
+                </p>
+            {% endfor %}
+        </section>
+    </section>
+{% endblock %}
+
