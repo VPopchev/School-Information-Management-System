@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if unapprovedUsers|length != 0 %}
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in unapprovedUsers %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName ~ ' ' ~ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles|join(", ") }}</td>
+                    <td>
+                        <a href="{{ path('approve_user', {'id': user.id}) }}">
+                            Approve
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>No Registration Requests</h2>
+        <a href="{{ path('homepage') }}" class="formBack">Back To Home</a>
+    {% endif %}
+{% endblock %}
+

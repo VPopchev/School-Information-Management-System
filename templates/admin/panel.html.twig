@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Admin Panel</h1>
+    <a href="{{ path('approve_panel') }}">
+        Approve Registration Requests
+        {{ unapprovedCount == 0 ? '':'(' ~ unapprovedCount ~ ')' }}
+    </a>
+{% endblock %}
