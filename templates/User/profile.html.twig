@@ -5,15 +5,21 @@
         <h2>{{ user.firstName ~ ' ' ~ user.lastName }} profile</h2>
         <ul>
             <li>Email: {{ user.email }}</li>
-            <li>Specialty: {{ user.specialty.name }}</li>
+            <li>Specialty: {{ user.specialty.name|default("n/a") }}</li>
         </ul>
-        <a href="{{ path('set_specialty', {'id': user.id }) }}">Set Specialty</a>
+        {% if app.user.isAdmin or app.user.isEditor %}
+            <a href="{{ path('set_specialty', {'id': user.id }) }}">
+                Set Specialty
+            </a>
+        {% endif %}
     </section>
     <section class="user-profile-marks">
-        <h2>{{ user.firstName ~ ' ' ~ user.lastName }} Marks</h2>
-        {% for subject in user.specialty.subjects %}
-            <p>{{ subject.name }}: &nbsp;{{ user.subjectMarks(subject) }}</p>
-        {% endfor %}
+        {% if user.specialty is not null %}
+            <h2>{{ user.firstName ~ ' ' ~ user.lastName }} Marks</h2>
+            {% for subject in user.specialty.subjects %}
+                <p>{{ subject.name }}: &nbsp;{{ user.subjectMarks(subject) }}</p>
+            {% endfor %}
+        {% endif %}
     </section>
 {% endblock %}
 

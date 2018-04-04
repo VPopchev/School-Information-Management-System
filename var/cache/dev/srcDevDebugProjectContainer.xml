@@ -376,6 +376,10 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>D:\Projects\SIMS\SIMS\var\log/dev.log</argument>
     </service>
+    <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <argument type="service" id="App\Service\UserService"/>
+    </service>
     <service id="App\Controller\IndexController" class="App\Controller\IndexController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
@@ -398,6 +402,7 @@
     <service id="App\Controller\UserController" class="App\Controller\UserController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <argument type="service" id="App\Service\UserService"/>
+      <argument type="service" id="App\Service\RoleService"/>
     </service>
     <service id="App\Form\MarkType" class="App\Form\MarkType" public="false" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -435,6 +440,10 @@
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument type="service" id="App\Repository\MarkRepository"/>
     </service>
+    <service id="App\Service\RoleService" class="App\Service\RoleService" public="false" autowire="true" autoconfigure="true">
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <argument type="service" id="App\Repository\RoleRepository"/>
+    </service>
     <service id="App\Service\SpecialtyService" class="App\Service\SpecialtyService" public="false" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument type="service" id="App\Repository\SpecialtyRepository"/>
@@ -464,7 +473,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.m5Fxg7o"/>
+      <argument type="service" id="service_locator.FCKYOug"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -1932,14 +1941,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -4148,6 +4149,8 @@
         <argument>server:log</argument>
       </call>
     </service>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\AdminController" class="App\Controller\AdminController" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\IndexController" class="App\Controller\IndexController" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.App\Controller\IndexController" class="App\Controller\IndexController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.App\Controller\MarkController" class="App\Controller\MarkController" public="false" autowire="true" abstract="true"/>
@@ -4290,6 +4293,10 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id="service_locator.G_27PnE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection"/>
+    </service>
     <service id="service_locator.th8_RRL" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection"/>
@@ -4312,7 +4319,7 @@
       <tag name="container.service_locator"/>
       <argument type="collection"/>
     </service>
-    <service id="service_locator.m5Fxg7o" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.FCKYOug" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\SecurityController:login" type="service" id="service_locator.LJvx72t"/>
@@ -4736,6 +4743,7 @@
     <service id="Psr\Container\ContainerInterface" alias="service_container" public="false"/>
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container" public="false"/>
     <service id="App\Service\MarkServiceInterface" alias="App\Service\MarkService" public="false"/>
+    <service id="App\Service\RoleServiceInterface" alias="App\Service\RoleService" public="false"/>
     <service id="App\Service\SpecialtyServiceInterface" alias="App\Service\SpecialtyService" public="false"/>
     <service id="App\Service\SubjectServiceInterface" alias="App\Service\SubjectService" public="false"/>
     <service id="App\Service\UserServiceInterface" alias="App\Service\UserService" public="false"/>

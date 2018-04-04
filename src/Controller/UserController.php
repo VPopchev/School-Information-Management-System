@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\RoleServiceInterface;
 use App\Service\UserServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,12 +26,20 @@ class UserController extends Controller
     private $userService;
 
     /**
+     * @var RoleServiceInterface
+     */
+    private $roleService;
+
+    /**
      * UserController constructor.
      * @param UserServiceInterface $userService
+     * @param RoleServiceInterface $roleService
      */
-    public function __construct(UserServiceInterface $userService)
+    public function __construct(UserServiceInterface $userService,
+                                RoleServiceInterface $roleService)
     {
         $this->userService = $userService;
+        $this->roleService = $roleService;
     }
 
 
@@ -41,7 +50,10 @@ class UserController extends Controller
      */
     public function registerAction(Request $request) {
         $user = new User();
-        $form = $this->createForm(UserType::class,$user);
+        $basicRoles = $this->roleService->getBasicRoles();
+        $form = $this->createForm(UserType::class,$user,[
+            'basicRoles' => $basicRoles
+        ]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $this->userService->register($user);

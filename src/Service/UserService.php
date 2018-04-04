@@ -13,6 +13,8 @@ use App\Entity\Specialty;
 use App\Entity\User;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManagerInterface;
 
 class UserService implements UserServiceInterface
@@ -53,6 +55,7 @@ class UserService implements UserServiceInterface
         $user->addRole(
             $this->roleRepository->findOneBy(['name' => 'ROLE_USER'])
         );
+        $user->setIsApproved(false);
         $pass = password_hash($user->getPassword(),PASSWORD_BCRYPT);
         $user->setPassword($pass);
         $this->entityManager->persist($user);
@@ -70,4 +73,17 @@ class UserService implements UserServiceInterface
     }
 
 
+
+    public function getUnapprovedUsers()
+    {
+        /** @var User[] $users */
+        $users = $this->userRepository->findBy(['isApproved' => false]);
+        return $users;
+    }
+
+    public function approveUserRegistration(User $user)
+    {
+        $user->setIsApproved(true);
+        $this->entityManager->flush();
+    }
 }

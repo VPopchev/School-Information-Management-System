@@ -28,6 +28,24 @@ class srcDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             $canonicalMethod = 'GET';
         }
 
+        // admin_panel
+        if ('/admin/panel' === $pathinfo) {
+            return array (  '_controller' => 'App\\Controller\\AdminController::adminPanelAction',  '_route' => 'admin_panel',);
+        }
+
+        if (0 === strpos($pathinfo, '/admin/approve')) {
+            // approve_panel
+            if ('/admin/approve-panel' === $pathinfo) {
+                return array (  '_controller' => 'App\\Controller\\AdminController::approvePanelAction',  '_route' => 'approve_panel',);
+            }
+
+            // approve_user
+            if (preg_match('#^/admin/approve/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'approve_user')), array (  '_controller' => 'App\\Controller\\AdminController::approveRegistrationAction',));
+            }
+
+        }
+
         // homepage
         if ('/index' === $pathinfo) {
             return array (  '_controller' => 'App\\Controller\\IndexController::indexAction',  '_route' => 'homepage',);

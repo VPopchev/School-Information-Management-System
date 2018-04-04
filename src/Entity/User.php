@@ -65,6 +65,16 @@ class User implements UserInterface
      */
     private $marks;
 
+    /**
+     * @var bool
+     * @ORM\Column(name="is_approved",type="boolean")
+     */
+    private $isApproved;
+
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -171,6 +181,24 @@ class User implements UserInterface
         $this->marks = $marks;
     }
 
+    /**
+     * @return bool
+     */
+    public function isApproved(): ?bool
+    {
+        return $this->isApproved;
+    }
+
+    /**
+     * @param bool $isApproved
+     */
+    public function setIsApproved(bool $isApproved): void
+    {
+        $this->isApproved = $isApproved;
+    }
+
+
+
 
     public function getSubjectMarks(Subject $subject){
         $marks = [];
@@ -219,6 +247,13 @@ class User implements UserInterface
         return $marksSum / $marksCount;
     }
 
+    /**
+     * @param Role $role
+     */
+    public function setRoles(Role $role): void
+    {
+        $this->roles[] = $role;
+    }
 
 
 
@@ -240,6 +275,9 @@ class User implements UserInterface
      */
     public function getRoles()
     {
+        if ($this->roles == null){
+            return null;
+        }
         $stringRoles = [];
         foreach ($this->roles as $role){
             /** @var Role $role */
@@ -254,6 +292,8 @@ class User implements UserInterface
     public function addRole(Role $role){
         $this->roles[] = $role;
     }
+
+
 
     /**
      * Returns the salt that was originally used to encode the password.
@@ -289,4 +329,23 @@ class User implements UserInterface
     }
 
 
+    public function isAdmin(){
+        return in_array('ROLE_ADMIN',$this->getRoles());
+    }
+
+    public function isEditor(){
+        return in_array('ROLE_EDITOR',$this->getRoles());
+    }
+
+    public function isStudent(){
+        return in_array('ROLE_STUDENT',$this->getRoles());
+    }
+
+    public function isTeacher(){
+        return in_array('ROLE_TEACHER',$this->getRoles());
+    }
+
+    public function isParent(){
+        return in_array('ROLE_PARENT',$this->getRoles());
+    }
 }

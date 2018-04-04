@@ -1,24 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<h1>{{ student.firstName ~ ' ' ~ student.lastName }}</h1>
+    <h1>{{ student.firstName ~ ' ' ~ student.lastName }}</h1>
     <h2>Specialty: {{ student.specialty.name|default('n/a') }}</h2>
     {% if student.specialty is null %}
         <a href="{{ path('set_specialty', {'id': student.id}) }}">Set Specialty</a>
     {% endif %}
-    <section class="marks">
-        <h2>Marks</h2>
-        {% for subject in student.specialty.subjects %}
-            <p>
-                <span class="subj-name">{{ subject.name }}</span>:
-                {{ student.subjectMarks(subject) }}
-                <span class="sub-avg">Average:
-                {{ student.averageSuccessBySubject(subject)|number_format(2) }}</span>
-            </p>
-        {% endfor %}
-        <hr>
-        <p class="avg-success">Average Success {{ student.averageSuccess|number_format(2) }}</p>
-        <a href="{{ path('new_mark', {'id': student.id}) }}">Add Marks</a>
-    </section>
+    {% if student.specialty is not null %}
+
+        <section class="marks">
+            <h2>Marks</h2>
+            {% for subject in student.specialty.subjects %}
+                <p>
+                    <span class="subj-name">{{ subject.name }}</span>:
+                    {{ student.subjectMarks(subject) }}
+                    <span class="sub-avg">Average:
+                        {{ student.averageSuccessBySubject(subject)|number_format(2) }}</span>
+                </p>
+            {% endfor %}
+            <hr>
+            <p class="avg-success">Average Success {{ student.averageSuccess|number_format(2) }}</p>
+            <a href="{{ path('new_mark', {'id': student.id}) }}">Add Marks</a>
+        </section>
+    {% endif %}
 {% endblock %}
 

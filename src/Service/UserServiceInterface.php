@@ -11,6 +11,7 @@ namespace App\Service;
 
 use App\Entity\Specialty;
 use App\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 
 interface UserServiceInterface
 {
@@ -19,4 +20,8 @@ interface UserServiceInterface
     public function getAll();
 
     public function getUsersBySpecialty(Specialty $specialty);
+
+    public function getUnapprovedUsers();
+
+    public function approveUserRegistration(User $user);
 }

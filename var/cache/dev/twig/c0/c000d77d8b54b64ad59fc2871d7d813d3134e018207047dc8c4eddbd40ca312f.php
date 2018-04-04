@@ -62,36 +62,50 @@ class __TwigTemplate_73589004dc9f311f641a6d6c1952c94f5ae8d3c8c07a19b9dc00bdcd147
         echo "</li>
             <li>Specialty: ";
         // line 8
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 8, $this->source); })()), "specialty", array()), "name", array()), "html", null, true);
+        echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "specialty", array(), "any", false, true), "name", array(), "any", true, true)) ? (_twig_default_filter(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["user"] ?? null), "specialty", array(), "any", false, true), "name", array()), "n/a")) : ("n/a")), "html", null, true);
         echo "</li>
         </ul>
-        <a href=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("set_specialty", array("id" => twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 10, $this->source); })()), "id", array()))), "html", null, true);
-        echo "\">Set Specialty</a>
-    </section>
-    <section class=\"user-profile-marks\">
-        <h2>";
-        // line 13
-        echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 13, $this->source); })()), "firstName", array()) . " ") . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 13, $this->source); })()), "lastName", array())), "html", null, true);
-        echo " Marks</h2>
         ";
-        // line 14
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 14, $this->source); })()), "specialty", array()), "subjects", array()));
-        foreach ($context['_seq'] as $context["_key"] => $context["subject"]) {
-            // line 15
-            echo "            <p>";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subject"], "name", array()), "html", null, true);
-            echo ": &nbsp;";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 15, $this->source); })()), "subjectMarks", array(0 => $context["subject"]), "method"), "html", null, true);
-            echo "</p>
+        // line 10
+        if ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 10, $this->source); })()), "user", array()), "isAdmin", array()) || twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 10, $this->source); })()), "user", array()), "isEditor", array()))) {
+            // line 11
+            echo "            <a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("set_specialty", array("id" => twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 11, $this->source); })()), "id", array()))), "html", null, true);
+            echo "\">
+                Set Specialty
+            </a>
         ";
         }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['subject'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 15
+        echo "    </section>
+    <section class=\"user-profile-marks\">
+        ";
         // line 17
+        if ( !(null === twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 17, $this->source); })()), "specialty", array()))) {
+            // line 18
+            echo "            <h2>";
+            echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 18, $this->source); })()), "firstName", array()) . " ") . twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 18, $this->source); })()), "lastName", array())), "html", null, true);
+            echo " Marks</h2>
+            ";
+            // line 19
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 19, $this->source); })()), "specialty", array()), "subjects", array()));
+            foreach ($context['_seq'] as $context["_key"] => $context["subject"]) {
+                // line 20
+                echo "                <p>";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subject"], "name", array()), "html", null, true);
+                echo ": &nbsp;";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new Twig_Error_Runtime('Variable "user" does not exist.', 20, $this->source); })()), "subjectMarks", array(0 => $context["subject"]), "method"), "html", null, true);
+                echo "</p>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['subject'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 22
+            echo "        ";
+        }
+        // line 23
         echo "    </section>
 ";
         
@@ -114,7 +128,7 @@ class __TwigTemplate_73589004dc9f311f641a6d6c1952c94f5ae8d3c8c07a19b9dc00bdcd147
 
     public function getDebugInfo()
     {
-        return array (  95 => 17,  84 => 15,  80 => 14,  76 => 13,  70 => 10,  65 => 8,  61 => 7,  56 => 5,  53 => 4,  44 => 3,  15 => 1,);
+        return array (  109 => 23,  106 => 22,  95 => 20,  91 => 19,  86 => 18,  84 => 17,  80 => 15,  72 => 11,  70 => 10,  65 => 8,  61 => 7,  56 => 5,  53 => 4,  44 => 3,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -126,15 +140,21 @@ class __TwigTemplate_73589004dc9f311f641a6d6c1952c94f5ae8d3c8c07a19b9dc00bdcd147
         <h2>{{ user.firstName ~ ' ' ~ user.lastName }} profile</h2>
         <ul>
             <li>Email: {{ user.email }}</li>
-            <li>Specialty: {{ user.specialty.name }}</li>
+            <li>Specialty: {{ user.specialty.name|default(\"n/a\") }}</li>
         </ul>
-        <a href=\"{{ path('set_specialty', {'id': user.id }) }}\">Set Specialty</a>
+        {% if app.user.isAdmin or app.user.isEditor %}
+            <a href=\"{{ path('set_specialty', {'id': user.id }) }}\">
+                Set Specialty
+            </a>
+        {% endif %}
     </section>
     <section class=\"user-profile-marks\">
-        <h2>{{ user.firstName ~ ' ' ~ user.lastName }} Marks</h2>
-        {% for subject in user.specialty.subjects %}
-            <p>{{ subject.name }}: &nbsp;{{ user.subjectMarks(subject) }}</p>
-        {% endfor %}
+        {% if user.specialty is not null %}
+            <h2>{{ user.firstName ~ ' ' ~ user.lastName }} Marks</h2>
+            {% for subject in user.specialty.subjects %}
+                <p>{{ subject.name }}: &nbsp;{{ user.subjectMarks(subject) }}</p>
+            {% endfor %}
+        {% endif %}
     </section>
 {% endblock %}
 

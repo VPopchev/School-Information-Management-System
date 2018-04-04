@@ -7,16 +7,21 @@
     {% if app.user %}
         <section class="baseInfo">
             <h2>Welcome back {{ app.user.firstName ~ ' ' ~ app.user.lastName }}</h2>
-            <section class="specialties">
-                <h3>Your Specialty</h3>
-                <div>
-                    <p>
-                        <a href="{{ path('specialty_profile', {'id': app.user.specialty.id}) }}">
-                            {{ app.user.specialty.name }}
-                        </a>
-                    </p>
-                </div>
-            </section>
+            {% if app.user and app.user.isApproved %}
+                <section class="specialties">
+
+                    <h3>Your Specialty</h3>
+                    <div>
+                        <p>
+                            <a href="{{ path('specialty_profile', {'id': app.user.specialty.id}) }}">
+                                {{ app.user.specialty.name }}
+                            </a>
+                        </p>
+                    </div>
+                </section>
+                {% else %}
+                <h3>Your registration has been requested, please be patient while school director approve it </h3>
+            {% endif %}
         </section>
     {% endif %}
 {% endblock %}

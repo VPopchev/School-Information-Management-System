@@ -83,23 +83,35 @@ class __TwigTemplate_1e0d33be19523e6b7a972e63d62b8caa7642246b74c4eb7fcb3657ac236
             // line 9
             echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 9, $this->source); })()), "user", array()), "firstName", array()) . " ") . twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 9, $this->source); })()), "user", array()), "lastName", array())), "html", null, true);
             echo "</h2>
-            <section class=\"specialties\">
-                <h3>Your Specialty</h3>
-                <div>
-                    <p>
-                        <a href=\"";
-            // line 14
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("specialty_profile", array("id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 14, $this->source); })()), "user", array()), "specialty", array()), "id", array()))), "html", null, true);
-            echo "\">
-                            ";
-            // line 15
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 15, $this->source); })()), "user", array()), "specialty", array()), "name", array()), "html", null, true);
-            echo "
-                        </a>
-                    </p>
-                </div>
-            </section>
-        </section>
+            ";
+            // line 10
+            if ((twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 10, $this->source); })()), "user", array()) && twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 10, $this->source); })()), "user", array()), "isApproved", array()))) {
+                // line 11
+                echo "                <section class=\"specialties\">
+
+                    <h3>Your Specialty</h3>
+                    <div>
+                        <p>
+                            <a href=\"";
+                // line 16
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("specialty_profile", array("id" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 16, $this->source); })()), "user", array()), "specialty", array()), "id", array()))), "html", null, true);
+                echo "\">
+                                ";
+                // line 17
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 17, $this->source); })()), "user", array()), "specialty", array()), "name", array()), "html", null, true);
+                echo "
+                            </a>
+                        </p>
+                    </div>
+                </section>
+                ";
+            } else {
+                // line 23
+                echo "                <h3>Your registration has been requested, please be patient while school director approve it </h3>
+            ";
+            }
+            // line 25
+            echo "        </section>
     ";
         }
         
@@ -122,7 +134,7 @@ class __TwigTemplate_1e0d33be19523e6b7a972e63d62b8caa7642246b74c4eb7fcb3657ac236
 
     public function getDebugInfo()
     {
-        return array (  96 => 15,  92 => 14,  84 => 9,  81 => 8,  79 => 7,  76 => 6,  67 => 5,  54 => 3,  45 => 2,  15 => 1,);
+        return array (  114 => 25,  110 => 23,  101 => 17,  97 => 16,  90 => 11,  88 => 10,  84 => 9,  81 => 8,  79 => 7,  76 => 6,  67 => 5,  54 => 3,  45 => 2,  15 => 1,);
     }
 
     public function getSourceContext()
@@ -136,16 +148,21 @@ class __TwigTemplate_1e0d33be19523e6b7a972e63d62b8caa7642246b74c4eb7fcb3657ac236
     {% if app.user %}
         <section class=\"baseInfo\">
             <h2>Welcome back {{ app.user.firstName ~ ' ' ~ app.user.lastName }}</h2>
-            <section class=\"specialties\">
-                <h3>Your Specialty</h3>
-                <div>
-                    <p>
-                        <a href=\"{{ path('specialty_profile', {'id': app.user.specialty.id}) }}\">
-                            {{ app.user.specialty.name }}
-                        </a>
-                    </p>
-                </div>
-            </section>
+            {% if app.user and app.user.isApproved %}
+                <section class=\"specialties\">
+
+                    <h3>Your Specialty</h3>
+                    <div>
+                        <p>
+                            <a href=\"{{ path('specialty_profile', {'id': app.user.specialty.id}) }}\">
+                                {{ app.user.specialty.name }}
+                            </a>
+                        </p>
+                    </div>
+                </section>
+                {% else %}
+                <h3>Your registration has been requested, please be patient while school director approve it </h3>
+            {% endif %}
         </section>
     {% endif %}
 {% endblock %}", "index.html.twig", "D:\\Projects\\SIMS\\SIMS\\templates\\index.html.twig");
